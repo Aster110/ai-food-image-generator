@@ -2,7 +2,8 @@
 
 import React, { useState } from 'react';
 import { generateImage } from '@/api/image-generation';
-import { PROMPT_TEMPLATES, FoodPromptParams } from '@/api/image-generation/prompt-builder';
+import { PROMPT_TEMPLATES } from '@/api/image-generation/prompt-builder';
+import Image from 'next/image';
 
 export default function FoodImageGenerator() {
   const [foodName, setFoodName] = useState('');
@@ -125,11 +126,13 @@ export default function FoodImageGenerator() {
       {generatedImage && !isLoading && (
         <div className="mt-6">
           <h3 className="text-lg font-medium mb-3 text-[#8c6a4f]">生成结果</h3>
-          <div className="border border-[#d3cbbe] rounded-md overflow-hidden bg-[#f8f5f0]">
-            <img 
+          <div className="border border-[#d3cbbe] rounded-md overflow-hidden bg-[#f8f5f0] relative w-full h-[400px]">
+            <Image 
               src={generatedImage} 
               alt={`${foodName}的AI生成图片`} 
-              className="w-full h-auto"
+              fill
+              style={{ objectFit: 'contain' }}
+              sizes="(max-width: 768px) 100vw, 768px"
             />
           </div>
           
