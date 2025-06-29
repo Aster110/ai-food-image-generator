@@ -1,62 +1,74 @@
-# Next.js Framework Starter
+# AI 食物图片生成器
 
-[![Deploy to Cloudflare](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/cloudflare/templates/tree/main/next-starter-template)
+这是一个基于Next.js开发的AI食物图片生成器，可以根据不同的食物名称和风格参数生成精美的食物图片。
 
-<!-- dash-content-start -->
+## 功能特点
 
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app). It's deployed on Cloudflare Workers as a [static website](https://developers.cloudflare.com/workers/static-assets/).
+- 支持多种预设风格（中式美食、西式美食、精美甜点、特色饮品）
+- 自定义参数设置（风格、拍摄角度、光照、背景、盘子类型等）
+- 响应式设计，适配各种设备
+- 历史生成记录展示
 
-This template uses [OpenNext](https://opennext.js.org/) via the [OpenNext Cloudflare adapter](https://opennext.js.org/cloudflare), which works by taking the Next.js build output and transforming it, so that it can run in Cloudflare Workers.
+## 快速开始
 
-<!-- dash-content-end -->
-
-Outside of this repo, you can start a new project with this template using [C3](https://developers.cloudflare.com/pages/get-started/c3/) (the `create-cloudflare` CLI):
+1. 克隆项目
 
 ```bash
-npm create cloudflare@latest -- --template=cloudflare/templates/next-starter-template
+git clone [项目地址]
+cd ai-food-image-generator
 ```
 
-A live public deployment of this template is available at [https://next-starter-template.templates.workers.dev](https://next-starter-template.templates.workers.dev)
-
-## Getting Started
-
-First, run:
+2. 安装依赖
 
 ```bash
 npm install
-# or
-yarn install
-# or
-pnpm install
-# or
-bun install
 ```
 
-Then run the development server (using the package manager of your choice):
+3. 启动开发服务器
 
 ```bash
 npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+4. 打开浏览器访问 `http://localhost:3000`
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 使用方法
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+1. 点击首页上的"开始生成食物图片"按钮
+2. 输入食物名称（如"红烧肉"、"意大利面"等）
+3. 选择预设风格或自定义参数
+4. 点击生成按钮，等待图片生成
+5. 生成的图片将显示在页面上，同时会被添加到历史记录中
 
-## Deploying To Production
+## 技术栈
 
-| Command                           | Action                                       |
-| :-------------------------------- | :------------------------------------------- |
-| `npm run build`                   | Build your production site                   |
-| `npm run preview`                 | Preview your build locally, before deploying |
-| `npm run build && npm run deploy` | Deploy your production site to Cloudflare    |
+- Next.js
+- React
+- TypeScript
+- Tailwind CSS
+- AI图像生成API
 
-## Learn More
+## 项目结构
 
-To learn more about Next.js, take a look at the following resources:
+```
+src/
+├── api/                 # API相关代码
+│   ├── config.ts        # API配置
+│   └── image-generation/ # 图像生成API
+│       ├── index.ts     # API入口
+│       ├── service.ts   # 服务层
+│       ├── types.ts     # 类型定义
+│       └── prompt-builder.ts # Prompt构建器
+├── app/                 # Next.js应用页面
+│   ├── page.tsx         # 首页
+│   └── food-image-generator/ # 食物图片生成器页面
+│       └── page.tsx
+└── components/          # React组件
+    └── FoodImageGenerator/ # 食物图片生成器组件
+        └── index.tsx
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 注意事项
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+- API密钥已经直接写在代码中，方便快速使用
+- 在实际生产环境中，应该使用环境变量来存储API密钥
